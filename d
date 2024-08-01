@@ -1,50 +1,42 @@
 1]
-from OpenGL.GL import *
-from OpenGL.GLUT import *
-from OpenGL.GLU import *
-import sys
+from OpenGL.GL import * 
+from OpenGL.GLUT import * 
+from OpenGL.GLU import * 
+def init():  
+    glClearColor(0.0,0.0,0.0,1.0) 
+    gluOrtho2D(0,100,0,100) 
+def plotLine(x1,y1,x2,y2): 
+    m = 2 * (y2 - y1) 
+    pk = m - (x2 - x1) 
+    y=y1  
+    glClear(GL_COLOR_BUFFER_BIT) 
+    glColor3f(1.0,0.0,0.0)  
+    glPointSize(10.0)  
+    glBegin(GL_POINTS) 
+    for x in range(x1,x2+1): 
+        glVertex2f(x,y) 
+        pk =pk + m 
+        if (pk>= 0): 
+            y=y+1 
+            pk =pk - 2 * (x2 - x1) 
+    glEnd() 
+    glFlush() 
+x1 = int(input("Enter x1: ")) 
+y1 = int(input("Enter y1: ")) 
+x2 = int(input("Enter x2: ")) 
+y2 = int(input("Enter y2: ")) 
+print("starting window....") 
+glutInit(sys.argv) 
+glutInitDisplayMode(GLUT_RGB) 
+glutInitWindowSize(500,500) 
+glutInitWindowPosition(0,0) 
+glutCreateWindow("Bresenham Line Algorithm") 
+glutDisplayFunc(lambda:plotLine(x1,y1,x2,y2))  
+init() 
+glutMainLoop()
 
-def init():
-    glClearColor(1.0, 1.0, 1.0, 1.0)
-    gluOrtho2D(0, 100, 0, 100)
-    glClear(GL_COLOR_BUFFER_BIT)
 
-def plotLine(x1, y1, x2, y2):
-    dx = x2 - x1
-    dy = y2 - y1
-    m = 2 * dy
-    pk = m - dx
-    y = y1
-    
-    glColor3f(1.0, 0.0, 0.0)
-    glPointSize(10.0)
-    glBegin(GL_POINTS)
-    for x in range(x1, x2 + 1):
-        glVertex2f(x, y)
-        pk += m
-        if pk >= 0:
-            y += 1
-            pk -= 2 * dx
-    glEnd()
-    glFlush()
-
-def main():
-    x1 = int(input("Enter x1: "))
-    y1 = int(input("Enter y1: "))
-    x2 = int(input("Enter x2: "))
-    y2 = int(input("Enter y2: "))
-
-    glutInit()
-    glutInitDisplayMode(GLUT_RGB)
-    glutInitWindowSize(500, 500)
-    glutInitWindowPosition(0, 0)
-    glutCreateWindow("Line Drawing")
-    glutDisplayFunc(lambda: plotLine(x1, y1, x2, y2))
-    init()
-    glutMainLoop()
-
-if __name__ == "__main__":
-    main()
+        
 
 2]
 from OpenGL.GL import *
@@ -80,6 +72,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+        
 
 
 3]
@@ -173,6 +169,12 @@ def main():
 if __name__ == "__main__":
     main()
 
+
+
+
+
+        
+
 4]
 
 import sys
@@ -242,6 +244,14 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+        
 
 5]
 
@@ -369,6 +379,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+        
 
 6]
 
@@ -498,6 +514,12 @@ if __name__ == "__main__":
     main()
 
 
+
+
+
+
+        
+
 7]
 
 import cv2 
@@ -532,6 +554,14 @@ def main():
 if __name__ == "__main__": 
     main() 
 
+
+
+
+
+
+
+
+                 
 8]
 
 import cv2 
@@ -579,7 +609,16 @@ def main():
 if __name__ == "__main__": 
     main() 
  
- 
+
+
+
+
+
+
+
+
+
+               
 9]
 
 import cv2 
@@ -630,6 +669,18 @@ def main():
 if __name__ == "__main__": 
     main()
 
+
+
+
+
+
+
+
+
+
+
+                  
+
 10]
 
 import cv2 
@@ -651,6 +702,15 @@ display_image('Original Image', image)
 display_image('Blurred Image', blurred_image) 
 if __name__ == "__main__": 
 main() 
+
+
+
+
+
+
+
+
+                 
 
 11]
 
@@ -693,6 +753,18 @@ def main():
 if __name__ == "__main__": 
     main()
 
+
+
+
+
+
+
+
+
+
+
+
+        
 12]
 
  
