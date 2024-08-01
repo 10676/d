@@ -178,7 +178,7 @@ if __name__ == "__main__":
 import sys
 from OpenGL.GL import *
 from OpenGL.GLUT import *
-from OpenGL.GLU import *  # Make sure GLU is imported
+from OpenGL.GLU import * 
 
 angle = 0.0
 scale_factor = 1.0
@@ -525,7 +525,7 @@ def display_quadrants(left, right, up, down):
     cv2.destroyAllWindows() 
  
 def main(): 
-    image_path = "your_image_path.jpg"  # Replace with the path to your image 
+    image_path = "your_image_path.jpg"
     left, right, up, down = split_image(image_path) 
     display_quadrants(left, right, up, down) 
  
@@ -556,7 +556,7 @@ image.shape[0]))
  
 def main(): 
 
-    image_path = "your_image_path.jpg"  # Replace with the path to your image 
+    image_path = "your_image_path.jpg"  
     original_image = cv2.imread(image_path) 
  
  
@@ -616,7 +616,7 @@ def texture_filtering(image):
  
 def main(): 
    
-    image_path = "your_image_path.jpg"  # Replace with the path to your image 
+    image_path = "your_image_path.jpg" 
     image = cv2.imread(image_path) 
  
     
@@ -642,7 +642,7 @@ def blur_image(image):
 blurred = cv2.GaussianBlur(image, (5, 5), 0) 
 return blurred 
 def main():  
-image_path = "your_image_path.jpg"  # Replace with the path to your image 
+image_path = "your_image_path.jpg" 
 image = cv2.imread(image_path) 
 
 blurred_image = blur_image(image) 
@@ -680,7 +680,7 @@ cv2.CHAIN_APPROX_SIMPLE)
  
 def main(): 
 
-    image_path = "your_image_path.jpg"  # Replace with the path to your image 
+    image_path = "your_image_path.jpg"  
     image = cv2.imread(image_path) 
  
    
@@ -704,7 +704,7 @@ def display_image(title, image):
     cv2.destroyAllWindows() 
  
 def detect_faces(image_path): 
-    # Load the pre-trained Haar Cascade classifier for face detection 
+
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 
 'haarcascade_frontalface_default.xml') 
  
@@ -722,7 +722,7 @@ minSize=(30, 30))
     return image 
  
 def main(): 
-    image_path = "your_image_path.jpg"  # Replace with the path to your image 
+    image_path = "your_image_path.jpg"  
  
     image_with_faces = detect_faces(image_path) 
   
