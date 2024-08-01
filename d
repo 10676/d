@@ -68,7 +68,6 @@ def draw():
     glEnd()
     glFlush()
 
-# Main function
 def main():
     glutInit()
     glutInitDisplayMode(GLUT_RGB)
@@ -90,7 +89,7 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import sys
 
-# Define the vertices, edges, and surfaces of the cube
+
 vertices = (
     (1, -1, -1),
     (1, 1, -1),
@@ -504,13 +503,12 @@ if __name__ == "__main__":
 import cv2 
  
 def split_image(image_path): 
-    # Read the image 
+    
     image = cv2.imread(image_path) 
  
-    # Get the dimensions of the image 
     height, width, _ = image.shape 
  
-    # Split the image into four quadrants 
+  
     left = image[0:height, 0:width//2] 
     right = image[0:height, width//2:width] 
     up = image[0:height//2, 0:width] 
@@ -557,20 +555,20 @@ image.shape[0]))
     return translated_image 
  
 def main(): 
-    # Read the image 
+
     image_path = "your_image_path.jpg"  # Replace with the path to your image 
     original_image = cv2.imread(image_path) 
  
-    # Rotate the image 
+ 
     rotated_image = rotate_image(original_image, 45) 
  
-    # Scale the image 
+   
     scaled_image = scale_image(original_image, 1.5) 
  
-    # Translate the image 
+
     translated_image = translate_image(original_image, 50, 50) 
  
-    # Display the images 
+ 
     cv2.imshow('Original Image', original_image) 
     cv2.imshow('Rotated Image', rotated_image) 
     cv2.imshow('Scaled Image', scaled_image) 
@@ -593,39 +591,39 @@ def display_image(title, image):
     cv2.destroyAllWindows() 
  
 def canny_edge_detection(image): 
-    # Convert the image to grayscale 
+    
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
  
-    # Apply Gaussian blur to reduce noise 
+  
     blurred = cv2.GaussianBlur(gray, (5, 5), 0) 
  
-    # Perform Canny edge detection 
+
     edges = cv2.Canny(blurred, 50, 150) 
  
     return edges 
  
 def texture_filtering(image): 
-    # Convert the image to grayscale 
+    
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
  
-    # Apply Laplacian filter for edge detection 
+ 
     laplacian = cv2.Laplacian(gray, cv2.CV_64F) 
  
-    # Convert the Laplacian result to uint8 
+
     laplacian_uint8 = np.uint8(np.absolute(laplacian)) 
  
     return laplacian_uint8 
  
 def main(): 
-    # Read the image 
+   
     image_path = "your_image_path.jpg"  # Replace with the path to your image 
     image = cv2.imread(image_path) 
  
-    # Apply Canny edge detection 
+    
     edges = canny_edge_detection(image) 
     display_image('Canny Edge Detection', edges) 
  
-    # Apply texture filtering 
+
     textures = texture_filtering(image) 
     display_image('Texture Filtering (Laplacian)', textures) 
  
@@ -640,16 +638,15 @@ cv2.imshow(title, image)
 cv2.waitKey(0) 
 cv2.destroyAllWindows() 
 def blur_image(image): 
-# Apply Gaussian blur 
+
 blurred = cv2.GaussianBlur(image, (5, 5), 0) 
 return blurred 
-def main(): 
-# Read the image 
+def main():  
 image_path = "your_image_path.jpg"  # Replace with the path to your image 
 image = cv2.imread(image_path) 
-# Blur the image 
+
 blurred_image = blur_image(image) 
-# Display the original and blurred images 
+
 display_image('Original Image', image) 
 display_image('Blurred Image', blurred_image) 
 if __name__ == "__main__": 
@@ -665,31 +662,31 @@ def display_image(title, image):
     cv2.destroyAllWindows() 
  
 def contour_image(image): 
-    # Convert the image to grayscale 
+   
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
  
-    # Apply thresholding to get a binary image 
+
     _, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY) 
  
-    # Find contours 
+  
     contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, 
 cv2.CHAIN_APPROX_SIMPLE) 
  
-    # Draw contours on the original image 
+   
     contour_image = image.copy() 
     cv2.drawContours(contour_image, contours, -1, (0, 255, 0), 2) 
  
     return contour_image 
  
 def main(): 
-    # Read the image 
+
     image_path = "your_image_path.jpg"  # Replace with the path to your image 
     image = cv2.imread(image_path) 
  
-    # Contour the image 
+   
     contoured_image = contour_image(image) 
  
-    # Display the original and contoured images 
+  
     display_image('Original Image', image) 
     display_image('Contoured Image', contoured_image) 
  
@@ -711,30 +708,24 @@ def detect_faces(image_path):
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 
 'haarcascade_frontalface_default.xml') 
  
-    # Read the image 
+   
     image = cv2.imread(image_path) 
  
-    # Convert the image to grayscale 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
- 
-    # Detect faces in the grayscale image 
+  
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, 
 minSize=(30, 30)) 
  
-    # Draw rectangles around the detected faces 
     for (x, y, w, h) in faces: 
         cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2) 
  
     return image 
  
 def main(): 
-    # Path to the image 
     image_path = "your_image_path.jpg"  # Replace with the path to your image 
  
-    # Detect faces in the image 
     image_with_faces = detect_faces(image_path) 
- 
-    # Display the original image with faces detected 
+  
     display_image('Image with Faces Detected', image_with_faces) 
  
 if __name__ == "__main__": 
